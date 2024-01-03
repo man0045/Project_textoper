@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recognition Result</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(45deg, #3498db, #e74c3c);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            border-bottom: 2px solid #ecf0f1; /* Light Grayish Blue */
+            padding-bottom: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            border: 5px solid #ecf0f1; /* Light Grayish Blue */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #3498db; /* Dodger Blue */
+        }
+
+        pre {
+            white-space: pre-wrap;
+            background-color: #ecf0f1; /* Light Grayish Blue */
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            color: #2c3e50; /* Dark Grayish Blue */
+        }
+    </style>
+</head>
+<body>
+    <h1>Recognition Result</h1>
+    <img src="{{ url_for('static', filename='uploads/' + image_path) }}" alt="Uploaded Image">
+    <p>Recognized Text:</p>
+    <pre>{{ text }}</pre>
+</body>
+</html>
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Boostrap 4 responsive Sidebar template with slide in/out effect">
+    <meta name="author" content="Simran Singh">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+
+    <title>Responsive sidebar - Boostrap 4 - Dark</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+        <link href="{{ url_for('static', filename='Side.css') }}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="side-bar"><!-- add class "side-bar-light" here for light version -->
+        <nav class="navbar navbar-inverse">
+
+            <!-- toogle button -->
+            <button class="navbar-toggler hidden-lg-up" type="button" id="toggler" aria-controls="list-container" aria-label="Toggle side-bar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- brand name goes below -->
+            <a class="navbar-brand" href="#">Brand</a>
+            <div class="list-container">
+                <ul>                    
+                    <!-- list of side bar elements goes here,-->
+                    <li><a href="{{ url_for('TextSummerizer') }}" class="active"><span class="navIcon"><i class="fa fa-sticky-note"></i></span>Text-Summerizer</a></li>
+                    <li><a href="{{ url_for('TextTranslator') }}"><span class="navIcon"><i class="fa fa-star-half-o"></i></span>TextTranslator</a></li>
+
+                    <li><a href="{{url_for('TextRecognition')}}"><span class="navIcon"><i class="fa fa-car"></i></span>TextRecognition</a></li>
+				</ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="bodyContent">
+        <div style="padding:1rem">
+            <h2>Body Content</h2>
+            <br />
+            <p>
+                A text summarizer is a tool or algorithm designed to condense a given piece of text while retaining its essential information. The goal of text summarization is to provide a concise and coherent summary that captures the key points of the original content. This can be particularly useful in various contexts, such as information retrieval, document summarization, and news aggregation.Despite the advancements in text summarization, challenges remain, particularly in creating summaries that are not only concise but also coherent and contextually accurate. Ongoing research in natural language processing continues to refine and enhance text summarization techniques for broader and more effective applications.
+            </p>
+            <p>
+                A text translator is a tool or system designed to convert text from one language into another while preserving the meaning and context of the content. The primary goal of text translation is to facilitate communication between individuals who speak different languages, allowing them to understand written information in a language they may not be proficient in.
+                While text translation tools have made substantial progress, they are not without limitations. Human translators often excel at capturing subtle nuances and cultural intricacies that automated systems may struggle with. However, continuous advancements in natural language processing and machine learning continue to enhance the capabilities of text translators, making them invaluable tools for global communication.
+            </p>
+            <p>
+                Handwritten line text recognition is a specialized area within the broader field of optical character recognition (OCR) that focuses on identifying and transcribing handwritten text in the form of lines. This technology is particularly valuable for converting handwritten documents, notes, or historical manuscripts into digital, searchable formats. Here are some key aspects of handwritten line text recognition.
+
+                Handwritten line text recognition systems are often integrated into user interfaces or document processing workflows. These systems may allow users to interactively correct recognition errors and provide feedback to improve the overall performance of the recognition engine.Despite the challenges, advancements in deep learning and neural network architectures have significantly improved the accuracy and applicability of handwritten line text recognition systems, making them increasingly valuable in the digitization and preservation of handwritten documents.
+            </p>
+            
+        </div>
+    </div>
+
+    <!-- javascript includes -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+    <script src="static/sidebar.js"></script>
+</body>
+
+</html>

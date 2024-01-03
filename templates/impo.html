@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translation</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(45deg, #3498db, #e74c3c);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            border-bottom: 2px solid #ecf0f1; /* Light Grayish Blue */
+            padding-bottom: 10px;
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #3498db; /* Dodger Blue */
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 2px solid #ecf0f1; /* Light Grayish Blue */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 2px solid #ecf0f1; /* Light Grayish Blue */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #3498db; /* Dodger Blue */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Darker Dodger Blue */
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333; /* Deep Gray */
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: cornsilk; /* Dodger Blue */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Language Translation</h1>
+        
+        <form method="post" action="/TextTranslator">
+            <label for="input_text">Enter text in English:</label>
+            <textarea id="input_text" name="input_text" rows="4" cols="50" required></textarea>
+
+            <label for="target_language">Select target language:</label>
+            <select id="target_language" name="target_language">
+                {% for lang, full_name in target_languages.items() %}
+                    <option value="{{ lang }}" {% if lang == selected_language %}selected{% endif %}>{{ full_name }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Translate</button>
+        </form>
+
+        {% if translated_text %}
+            <h2>Translated Text:</h2>
+            <p>{{ translated_text }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
