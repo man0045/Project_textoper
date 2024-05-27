@@ -411,22 +411,28 @@
             if (servicesLink) {
                 servicesLink.addEventListener('click', function(event) {
                     // Check if the user is not logged in (replace this condition with your actual check)
-                    var isLoggedIn = false; // Update this with your actual logic to check if the user is logged in
+                    var isLoggedIn = false;
         
                     if (!isLoggedIn) {
                         // If not logged in, prevent the default behavior of the link and show a SweetAlert
                         event.preventDefault();
-                        
+        
                         Swal.fire({
                             icon: 'info',
                             title: 'Please Login!',
                             text: 'To access services, please login first.',
                             showConfirmButton: true,
+                        }).then((result) => {
+                            // Check if the "OK" button is clicked
+                            if (result.isConfirmed) {
+                                // Redirect to the login page
+                                window.location.href = "/login";
+                            }
                         });
                     }
                 });
             }
-        });
+        });        
         </script>
         
 </body>

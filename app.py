@@ -4,6 +4,8 @@ from PIL import Image
 import os
 import numpy as np
 import tensorflow as tf
+from datetime import datetime
+from werkzeug.utils import secure_filename
 
 from flask import Flask, render_template, request
 from transformers import MarianMTModel, MarianTokenizer
@@ -17,7 +19,7 @@ from flask_mysqldb import MySQL
 
 from flask_bcrypt import Bcrypt
 
-# app = Flask(__name__)
+# app = Flask(__name__, static_url_path='/static')
 
 
 
@@ -201,14 +203,12 @@ def TextSummerizer():
 @app.route("/Summarize",methods=["GET","POST"])
 def Summarize():
  if req.method=="POST":
-  API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
+  API_URL = "https://api-inference.huggingface.co/models/Falconsai/text_summarization"
   headers = {"Authorization": "Bearer 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"}
-
   data = req.form["data"]
   maxL = int(req.form["maxL"])
   minL = maxL//4
   def query(payload):
-
    response = requests.post(API_URL, headers=headers, json=payload)
    return response.json()
 
@@ -236,14 +236,15 @@ def upload():
         image = Image.open(file)
         result = reader.readtext(image)
         recognized_text = '\n'.join([text[1] for text in result])
-
+        timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+        unique_filename = f"{timestamp}_{secure_filename(file.filename)}"
         # Save the uploaded image to the 'uploads' folder
         upload_folder = 'static/uploads'
         os.makedirs(upload_folder, exist_ok=True)
-        file_path = os.path.join(upload_folder, file.filename)
+        file_path = os.path.join(upload_folder, unique_filename)
         image.save(file_path)
 
-        return render_template('result.html', image_path=file_path, text=recognized_text)
+        return render_template('result.html', image_filename=unique_filename, text=recognized_text)
     except Exception as e:
         return render_template('index.html', error=f'Error processing image: {e}')
     

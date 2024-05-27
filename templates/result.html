@@ -45,17 +45,17 @@
 
         pre {
             white-space: pre-wrap;
-            background-color: #ecf0f1; /* Light Grayish Blue */
+            background-color: #ecf0f1;
             padding: 15px;
             border-radius: 5px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            color: #2c3e50; /* Dark Grayish Blue */
+            color: #2c3e50; 
         }
     </style>
 </head>
 <body>
     <h1>Recognition Result</h1>
-    <img src="{{ url_for('static', filename='uploads/' + image_path) }}" alt="Uploaded Image">
+    <img src="{{ url_for('static', filename='uploads/' + image_filename) }}" alt="Uploaded Image" width="150px">
     <p>Recognized Text:</p>
     <pre>{{ text }}</pre>
 </body>
